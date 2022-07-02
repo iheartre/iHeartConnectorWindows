@@ -67,22 +67,22 @@ namespace OximeterServer
 
         private void DeviceWatcher_Stopped(DeviceWatcher sender, object args)
         {
-            //throw new NotImplementedException();
+            string todo = "";
         }
 
         private void DeviceWatcher_EnumerationCompleted(DeviceWatcher sender, object args)
         {
-            string a = "";
+            string todo = "";
         }
 
         private void DeviceWatcher_Removed(DeviceWatcher sender, DeviceInformationUpdate args)
         {
-            string a = "";
+            string todo = "";
         }
 
         private void DeviceWatcher_Updated(DeviceWatcher sender, DeviceInformationUpdate args)
         {
-            string a = "";
+            string todo = "";
         }
 
         private async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
@@ -128,7 +128,6 @@ namespace OximeterServer
 
         void Characteristic_ValueChanged(GattCharacteristic sender, GattValueChangedEventArgs args)
         {
-            // An Indicate or Notify reported that the value has changed.
             DateTime dt = DateTime.Now;
 
             var reader = DataReader.FromBuffer(args.CharacteristicValue);
