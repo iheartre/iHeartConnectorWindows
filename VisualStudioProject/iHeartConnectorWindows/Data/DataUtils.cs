@@ -158,7 +158,7 @@ namespace OximeterServer.Data
 
             OximeterStreamData d1 = new OximeterStreamData()
             {
-                Timestamp = data2.Timestamp.AddMilliseconds(-0.5 * ms),
+                Timestamp = data2.Timestamp.AddMilliseconds(ms / 2),
                 Millis = (UInt32)(data1.Millis + ms / 2),
                 SpO2 = data2.SpO2,
                 PulseRate = data2.PulseRate,
@@ -166,6 +166,7 @@ namespace OximeterServer.Data
                 IRIndex = data2.IRIndex1,
                 SpO2Status = data2.SpO2Status,
                 BatteryLevel = data2.BatteryLevel,
+                DeviceId = data2.DeviceId,
             };
 
             OximeterStreamData d2 = new OximeterStreamData()
@@ -178,6 +179,7 @@ namespace OximeterServer.Data
                 IRIndex = data2.IRIndex2,
                 SpO2Status = data2.SpO2Status,
                 BatteryLevel = data2.BatteryLevel,
+                DeviceId = data2.DeviceId,
             };
 
             return new OximeterStreamData[] { d1, d2 };
@@ -189,7 +191,7 @@ namespace OximeterServer.Data
 
             OximeterStreamData d1 = new OximeterStreamData()
             {
-                Timestamp = data.Timestamp.AddMilliseconds(-0.5 * ms),
+                Timestamp = data.Timestamp.AddMilliseconds(ms / 2),
                 Millis = 0,
                 SpO2 = data.SpO2,
                 PulseRate = data.PulseRate,
@@ -197,6 +199,7 @@ namespace OximeterServer.Data
                 IRIndex = data.IRIndex1,
                 SpO2Status = data.SpO2Status,
                 BatteryLevel = data.BatteryLevel,
+                DeviceId = data.DeviceId,
             };
 
             OximeterStreamData d2 = new OximeterStreamData()
@@ -208,7 +211,8 @@ namespace OximeterServer.Data
                 IR = data.IR2,
                 IRIndex = data.IRIndex2,
                 SpO2Status = data.SpO2Status,
-                BatteryLevel = data.BatteryLevel
+                BatteryLevel = data.BatteryLevel,
+                DeviceId = data.DeviceId,
             };
 
             return new OximeterStreamData[] { d1, d2 };

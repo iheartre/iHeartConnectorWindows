@@ -37,6 +37,7 @@ namespace OximeterServer.Exporters
                     sl.SetCellValue(1, 6, "IR Index");
                     sl.SetCellValue(1, 7, "SpO2 Status");
                     sl.SetCellValue(1, 8, "Battery");
+                    sl.SetCellValue(1, 9, "Device ID");
 
                     for (int i = 0; i < _data.Count && !this.terminationRequested; i++)
                     {
@@ -50,13 +51,14 @@ namespace OximeterServer.Exporters
                         sl.SetCellValue(i + 2, 5, _data[i].IR);
                         sl.SetCellValue(i + 2, 6, _data[i].IRIndex);
                         sl.SetCellValue(i + 2, 7, $"{_data[i].SpO2Status:X2}");
-                        sl.SetCellValue(i + 2, 8, _data[i].BatteryLevel/1000);
+                        sl.SetCellValue(i + 2, 8, (float)_data[i].BatteryLevel / 1000.0f);
+                        sl.SetCellValue(i + 2, 9, _data[i].DeviceId);
                         Thread.SpinWait(100);
                     }
 
                     if (!this.terminationRequested)
                     {
-                        for (int i = 1; i <= 8; i++)
+                        for (int i = 1; i <= 9; i++)
                             sl.AutoFitColumn(i);
 
                         sl.SaveAs(_fileName);
