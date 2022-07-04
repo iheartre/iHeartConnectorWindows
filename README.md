@@ -6,3 +6,8 @@ iHeart oximeter data connector
 ## [MatlabExample](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Matlab%20Example)
 
 ![Matlab](../../../.github/blob/main/profile/assets/images/matlab_chart.png)
+
+## [LabViewExample](https://github.com/iheartre/iHeartConnectorWindows/tree/main/LabView%20Example)
+
+![LabView](../../../.github/blob/main/profile/assets/images/labview_front.png)
+
