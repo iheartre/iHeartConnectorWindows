@@ -39,7 +39,7 @@ namespace OximeterServer
         public void Send(byte[] data)
         {
             TcpClient client;
-            for(int i = 0; i < clients.Count; i++)
+            for (int i = 0; i < clients.Count; i++)
             {
                 client = clients[i];
                 try
@@ -56,16 +56,20 @@ namespace OximeterServer
 
         private void threadWork()
         {
+            TcpClient client;
             while (!terminationRequested)
             {
-                foreach (TcpClient c in clients)
-                    if (!c.Client.Poll(100, SelectMode.SelectWrite))
+                for (int i = 0; i < clients.Count; i++)
+                {
+                    client = clients[i];
+                    if (!client.Client.Poll(100, SelectMode.SelectWrite))
                         try
                         {
-                            clients.Remove(c);
-                            c.Dispose();
+                            clients.Remove(client);
+                            client.Dispose();
                         }
                         catch { }
+                }
 
                 Thread.Sleep(500);
             }
