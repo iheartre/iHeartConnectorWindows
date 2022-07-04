@@ -1,3 +1,3 @@
 # iHeartConnectorWindows
 iHeart oximeter data connector
-![Diagram](../../../.github/profile/assets/images/connector.png)
+![Diagram](../../../.github/blob/main/profile/assets/images/connector.png)
