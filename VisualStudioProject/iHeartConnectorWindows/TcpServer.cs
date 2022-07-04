@@ -38,8 +38,10 @@ namespace OximeterServer
 
         public void Send(byte[] data)
         {
-            foreach (TcpClient client in clients)
+            TcpClient client;
+            for(int i = 0; i < clients.Count; i++)
             {
+                client = clients[i];
                 try
                 {
                     client.GetStream().Write(data);
