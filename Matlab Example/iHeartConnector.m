@@ -22,7 +22,7 @@ for i = 1:pointsToRecord
 
     Y = str2num(parts(1));
     M = str2num(parts(2));
-    D = str2num(parts(4));
+    D = str2num(parts(3));
     H = str2num(parts(4));
     MI = str2num(parts(5));
     S = str2num(parts(6));
@@ -32,16 +32,16 @@ for i = 1:pointsToRecord
     
     millis = str2num(parts(8));
 
-    sp02 = str2num(parts(9));
+    spO2 = str2num(parts(9));
     pulse = str2num(parts(10));
 
     ir = str2num(parts(11));
     iri = str2num(parts(12));
-    sp02Status = hex2dec(parts(13));
+    spO2Status = hex2dec(parts(13));
     battery = str2num(parts(14))/1000;
     deviceId = str2num(parts(15));
 
-    oximeterData(index) = struct('Timestamp',dt,'Millis',millis,'SpO2',sp02,'Pulse',pulse,'IR',ir,'IRIndex',iri,'SpO2Status',sp02Status,'Battery',battery,'DeviceId',deviceId);
+    oximeterData(index) = struct('Timestamp',dt,'Millis',millis,'SpO2',spO2,'Pulse',pulse,'IR',ir,'IRIndex',iri,'SpO2Status',spO2Status,'Battery',battery,'DeviceId',deviceId);
     plotY(index) = ir;
     index = index + 1;
 end

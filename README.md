@@ -11,3 +11,7 @@ iHeart oximeter data connector
 
 ![LabView](../../../.github/blob/main/profile/assets/images/labview_front.png)
 
+
+## [OctaveExample](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Octave%20Example)
+
+![Octave](../../../.github/blob/main/profile/assets/images/octave_chart.png)
