@@ -1,12 +1,12 @@
 pkg load instrument-control;
 
-point2read = 1000;
+points2read = 1000;
 
 client = tcpclient("127.0.0.1", 6000);
 
-plotY = zeros(1, point2read);
+plotY = zeros(1, points2read);
 
-for i = 1:point2read
+for i = 1:points2read
   bytes = read(client, 71);
   line = native2unicode(bytes);
   parts = strsplit (line, ",");
