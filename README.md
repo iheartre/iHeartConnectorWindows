@@ -1,5 +1,5 @@
 # iHeartConnectorWindows
-iHeart oximeter data connector. C# application for Windows Runtime.
+iHeart oximeter data connector. C# application for Windows Runtime 10/11.
 - Reads oximeter using built-in or external USB Bluetooth adapter. (Bluetooth V4 or higher)
 - Displays oximeter data on a chart in real-time.
 - Records oximeter data and exports to CSV or Excel.
