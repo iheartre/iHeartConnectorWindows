@@ -112,9 +112,9 @@ namespace OximeterServer
             communicator.Start();
         }
 
-        private void Communicator_NewDeviceConnected(object? sender, EventArgs e)
+        private void Communicator_NewDeviceConnected(object? sender, BLECommunicator.NewDeviceConncectedEventArgs e)
         {
-            macAddress = ((BLECommunicator.NewDeviceConncectedEventArgs)e).MacAddress;
+            macAddress = e.MacAddress;
         }
 
         private void Communicator_NewDataReceived(object? sender, BLECommunicator.NewDataReceivedEventArgs e)

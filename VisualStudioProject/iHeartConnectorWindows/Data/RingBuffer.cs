@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OximeterServer
+namespace iHeartConnectorWindows.Data
 {
     internal class RingBuffer<T> : IEnumerable<T>
     {
@@ -73,7 +73,7 @@ namespace OximeterServer
 
         public void RemoveFromBegining(int lenght)
         {
-            if(lenght >= _buffer.Length || lenght >= _length)
+            if (lenght >= _buffer.Length || lenght >= _length)
             {
                 _begin = 0;
                 _end = 0;

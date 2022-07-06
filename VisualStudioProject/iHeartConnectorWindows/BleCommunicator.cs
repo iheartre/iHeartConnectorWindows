@@ -1,4 +1,5 @@
-﻿using OximeterServer.Data;
+﻿using iHeartConnectorWindows.Data;
+using OximeterServer.Data;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
@@ -13,12 +14,21 @@ namespace OximeterServer
             public OximeterRawData? Data { get; init; }
         }
 
+        public class NewDeviceConncectedEventArgs : EventArgs
+        {
+            public string MacAddress { get; set; }
+            public NewDeviceConncectedEventArgs(string macAddress)
+            {
+                MacAddress = macAddress;
+            }
+        }
+
         private readonly Thread thread;
         private bool terminationRequested = false;
         private readonly RingBuffer<byte> rxBuffer = new(100);
 
         public event EventHandler<NewDataReceivedEventArgs>? NewDataReceived;
-        public event EventHandler? NewDeviceConnected;
+        public event EventHandler<NewDeviceConncectedEventArgs>? NewDeviceConnected;
 
         public BLECommunicator()
         {
@@ -46,16 +56,12 @@ namespace OximeterServer
                                 requestedProperties,
                                 DeviceInformationKind.AssociationEndpoint);
 
-
-            // Register event handlers before starting the watcher.
-            // Added, Updated and Removed are required to get all nearby devices
             deviceWatcher.Added += DeviceWatcher_Added;
             deviceWatcher.Updated += DeviceWatcher_Updated;
             deviceWatcher.Removed += DeviceWatcher_Removed;
             deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
             deviceWatcher.Stopped += DeviceWatcher_Stopped;
 
-            // Start the watcher.
             deviceWatcher.Start();
 
             while (!terminationRequested)
@@ -139,15 +145,6 @@ namespace OximeterServer
 
             if (data != null)
                 NewDataReceived?.Invoke(this, new NewDataReceivedEventArgs() { Data = data });
-        }
-
-        public class NewDeviceConncectedEventArgs : EventArgs
-        {
-            public string MacAddress { get; set; }
-            public NewDeviceConncectedEventArgs(string macAddress)
-            {
-                MacAddress = macAddress;
-            }
         }
     }
 }

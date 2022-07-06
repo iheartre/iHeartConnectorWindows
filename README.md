@@ -3,6 +3,11 @@ iHeart oximeter data connector
 
 ![Connector](../../../.github/blob/main/profile/assets/images/connector.png)
 
+Uses [SpreadsheetLight](https://www.nuget.org/packages/SpreadsheetLight)
+```
+Install-Package SpreadsheetLight -Version 3.5.0
+```
+
 ## [MatlabExample](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Matlab%20Example)
 
 ![Matlab](../../../.github/blob/main/profile/assets/images/matlab_chart.png)
