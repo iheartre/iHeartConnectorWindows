@@ -1,14 +1,14 @@
 ﻿using System.Runtime;
-using OximeterServer.Data;
+using iHeartConnectorWindows.Data;
 using SpreadsheetLight;
 
-namespace OximeterServer.Exporters
+namespace iHeartConnectorWindows.Exporters
 {
     internal class ExcelExporter : Exporter
     {
         private readonly string _fileName;
-        private readonly List<OximeterStreamData> _data;
-        public ExcelExporter(string fileName, List<OximeterStreamData> data) : base()
+        private readonly DataStorage<OximeterStreamData> _data;
+        public ExcelExporter(string fileName, DataStorage<OximeterStreamData> data) : base()
         {
             _fileName = fileName;
             _data = data;

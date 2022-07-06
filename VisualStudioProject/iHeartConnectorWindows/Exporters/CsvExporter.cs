@@ -1,14 +1,14 @@
-﻿using OximeterServer.Data;
+﻿using iHeartConnectorWindows.Data;
 using System.Text;
 
-namespace OximeterServer.Exporters
+namespace iHeartConnectorWindows.Exporters
 {
     internal class CsvExporter : Exporter
     {
         private readonly char _separator;
         private readonly string _fileName;
-        private readonly List<OximeterStreamData> _data;
-        public CsvExporter(string fileName, List<OximeterStreamData> data, char separator) : base()
+        private readonly DataStorage<OximeterStreamData> _data;
+        public CsvExporter(string fileName, DataStorage<OximeterStreamData> data, char separator) : base()
         {
             _fileName = fileName;
             _data = data;

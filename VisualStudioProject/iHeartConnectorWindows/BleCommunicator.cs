@@ -1,5 +1,4 @@
 ﻿using iHeartConnectorWindows.Data;
-using OximeterServer.Data;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
@@ -32,7 +31,7 @@ namespace OximeterServer
 
         public BLECommunicator()
         {
-            thread = new Thread(threadWork);
+            thread = new Thread(ThreadWork);
         }
 
         public void Start()
@@ -46,7 +45,7 @@ namespace OximeterServer
             await Task.Run(() => thread.Join());
         }
 
-        private void threadWork()
+        private void ThreadWork()
         {
             string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
 
@@ -123,7 +122,7 @@ namespace OximeterServer
             }
         }
 
-        private string MacAddresFromId(string id)
+        private static string MacAddresFromId(string id)
         {
             string[] parts = id.Split(new char[] { '-' });
             if (parts.Length == 2)

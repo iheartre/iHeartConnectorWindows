@@ -1,5 +1,5 @@
-using OximeterServer.Data;
-using OximeterServer.Exporters;
+using iHeartConnectorWindows.Data;
+using iHeartConnectorWindows.Exporters;
 using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -76,7 +76,7 @@ namespace OximeterServer
         private readonly OximeterControls.OximeterPanel oximeterPanel;
 
         private OximeterRawData? currentData;
-        private readonly List<OximeterStreamData> recordedData = new();
+        private readonly DataStorage<OximeterStreamData> recordedData = new (10000000);
         private OximeterStreamData? prevStreamData = null;
         private bool recording;
         private string status = "";
@@ -134,6 +134,7 @@ namespace OximeterServer
                 if (recording)
                 {
                     if (sd != null)
+
                         recordedData.AddRange(sd);
                     status = $"{recordedData.Count} points";
                 }
@@ -246,7 +247,7 @@ namespace OximeterServer
             recording = false;
             recordButton.Enabled = true;
             stopButton.Enabled = false;
-            exportButton.Enabled = recordedData.Count > 0;
+            exportButton.Enabled = recordedData.Length > 0;
         }
 
         private void exportToExcelMenuItem_Click(object sender, EventArgs e)

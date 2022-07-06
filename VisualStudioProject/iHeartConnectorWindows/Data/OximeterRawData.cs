@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OximeterServer.Data
+namespace iHeartConnectorWindows.Data
 {
     internal class OximeterRawData
     {
