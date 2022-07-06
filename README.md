@@ -5,6 +5,9 @@ iHeart oximeter data connector. C# application for Windows Runtime 10/11.
 - Records oximeter data and exports to CSV or Excel.
 - Streams oximeter real-time data via TCP socket. (localhost:6000)
 
+[Compilied Binaries](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Binaries)
+[Visula Studio Project](https://github.com/iheartre/iHeartConnectorWindows/tree/main/VisualStudioProject)
+
 ![Connector](../../../.github/blob/main/profile/assets/images/connector.png)
 
 Uses [SpreadsheetLight](https://www.nuget.org/packages/SpreadsheetLight)
