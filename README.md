@@ -16,20 +16,20 @@ Uses [SpreadsheetLight](https://www.nuget.org/packages/SpreadsheetLight)
 Install-Package SpreadsheetLight -Version 3.5.0
 ```
 
-## [MatlabExample](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Matlab%20Example)
+## [Matlab example](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Matlab%20Example)
 
 Reading oximeter data from iHeartConnectorWindows via TCP.
 
 ![Matlab](../../../.github/blob/main/profile/assets/images/matlab_chart.png)
 
-## [LabViewExample](https://github.com/iheartre/iHeartConnectorWindows/tree/main/LabView%20Example)
+## [LabView example](https://github.com/iheartre/iHeartConnectorWindows/tree/main/LabView%20Example)
 
 Reading oximeter data from iHeartConnectorWindows via TCP.
 
 ![LabView](../../../.github/blob/main/profile/assets/images/labview_front.png)
 
 
-## [OctaveExample](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Octave%20Example)
+## [Octave example](https://github.com/iheartre/iHeartConnectorWindows/tree/main/Octave%20Example)
 
 Reading oximeter data from iHeartConnectorWindows via TCP.
 
