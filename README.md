@@ -1,4 +1,4 @@
-# iHeartConnectorWindows
+# iHeart Connector for Windows
 iHeart oximeter data connector for Windows Runtime 10/11.
 - Reads oximeter using built-in or external USB Bluetooth adapter. (Bluetooth V4 or higher)
 - Displays oximeter data on a chart in real-time.
