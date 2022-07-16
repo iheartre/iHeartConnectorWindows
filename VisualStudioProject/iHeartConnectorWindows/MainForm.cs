@@ -160,6 +160,7 @@ namespace OximeterServer
                         oximeterPanel.SpO2 = currentData.SpO2;
                         oximeterPanel.PulseRate = currentData.PulseRate;
                         oximeterPanel.MacAddress = macAddress;
+                        oximeterPanel.Id = currentData.DeviceId;
                         oximeterPanel.AddPulseValue(currentData.IR1);
                     }
                     break;

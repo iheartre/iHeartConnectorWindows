@@ -101,6 +101,8 @@ namespace OximeterControls
         }
 
         public string MacAddress { get { return macLabel.Text; } set { macLabel.Text = value; } }
+        private int id;
+        public int Id { get { return id; } set { id = value; idLabel.Text = value.ToString(); } }
 
         private float progress;
         public float Progress
@@ -169,6 +171,9 @@ namespace OximeterControls
             Pen fillPen = pulseFillPen;
             Pen linePen = pulseLinePen;
 
+            List<Point> curvePointsBefore = new List<Point>();
+            List<Point> curvePointsAfter = new List<Point>();
+
             switch (mode)
             {
                 case ModeEnum.Pulse:
@@ -191,11 +196,17 @@ namespace OximeterControls
                 if (i == chartIndex || i == chartIndex - 1 || i == chartIndex + 1)
                     continue;
 
-
                 g.DrawLine(fillPen, i + chartPadding, chartPanel.Height - chartPadding, i + chartPadding, chartY[i]);
-                if (i > 0)
-                    g.DrawLine(linePen, i - 1 + chartPadding, chartY[i - 1], i + chartPadding, chartY[i]);
+                if (i < chartIndex - 1)
+                    curvePointsBefore.Add(new Point((int)(i + chartPadding), (int)chartY[i]));
+                if (i > chartIndex + 1)
+                    curvePointsAfter.Add(new Point((int)(i + chartPadding), (int)chartY[i]));
             }
+
+            if (curvePointsBefore.Count > 1)
+                g.DrawCurve(linePen, curvePointsBefore.ToArray());
+            if (curvePointsAfter.Count > 1)
+                g.DrawCurve(linePen, curvePointsAfter.ToArray());
         }
 
         public void AddPulseValue(UInt32 value)

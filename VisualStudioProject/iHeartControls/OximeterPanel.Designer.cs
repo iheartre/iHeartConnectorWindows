@@ -39,10 +39,13 @@
             this.spO2Label = new System.Windows.Forms.Label();
             this.spO2TitleLabel = new System.Windows.Forms.Label();
             this.macLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.idLabel = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
             this.pulsePanel.SuspendLayout();
             this.spO2Panel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // separator
@@ -79,7 +82,7 @@
             // 
             this.dataPanel.Controls.Add(this.pulsePanel);
             this.dataPanel.Controls.Add(this.spO2Panel);
-            this.dataPanel.Controls.Add(this.macLabel);
+            this.dataPanel.Controls.Add(this.panel1);
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataPanel.Location = new System.Drawing.Point(0, 0);
             this.dataPanel.Name = "dataPanel";
@@ -159,14 +162,36 @@
             // 
             // macLabel
             // 
-            this.macLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.macLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.macLabel.ForeColor = System.Drawing.Color.Orange;
-            this.macLabel.Location = new System.Drawing.Point(0, 66);
+            this.macLabel.Location = new System.Drawing.Point(0, 0);
             this.macLabel.Name = "macLabel";
             this.macLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.macLabel.Size = new System.Drawing.Size(150, 23);
+            this.macLabel.Size = new System.Drawing.Size(125, 23);
             this.macLabel.TabIndex = 2;
             this.macLabel.Text = "‒";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.macLabel);
+            this.panel1.Controls.Add(this.idLabel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 66);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(150, 23);
+            this.panel1.TabIndex = 3;
+            // 
+            // idLabel
+            // 
+            this.idLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.idLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.idLabel.Location = new System.Drawing.Point(125, 0);
+            this.idLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(25, 23);
+            this.idLabel.TabIndex = 3;
+            this.idLabel.Text = "-";
+            this.idLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // OximeterPanel
             // 
@@ -184,6 +209,7 @@
             this.dataPanel.ResumeLayout(false);
             this.pulsePanel.ResumeLayout(false);
             this.spO2Panel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -201,5 +227,7 @@
         private System.Windows.Forms.Label macLabel;
         private System.Windows.Forms.Panel chartPanel;
         private System.Windows.Forms.Panel dataPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label idLabel;
     }
 }
