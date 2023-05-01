@@ -76,7 +76,7 @@ namespace OximeterServer
         private readonly OximeterControls.OximeterPanel oximeterPanel;
 
         private OximeterRawData? currentData;
-        private readonly DataStorage<OximeterStreamData> recordedData = new (10000000);
+        private readonly DataStorage<OximeterStreamData> recordedData = new(10000000);
         private OximeterStreamData? prevStreamData = null;
         private bool recording;
         private string status = "";
@@ -97,6 +97,7 @@ namespace OximeterServer
             InitializeComponent();
 
             oximeterPanel = new OximeterControls.OximeterPanel();
+            oximeterPanel.Dock = DockStyle.Fill;
             oxiListPanel.Controls.Add(oximeterPanel);
 
             proc = HookCallback;
@@ -134,18 +135,19 @@ namespace OximeterServer
                 if (recording)
                 {
                     if (sd != null)
-
                         recordedData.AddRange(sd);
+
                     status = $"{recordedData.Count} points";
                 }
 
                 currentData = rd;
 
-                server.Send(sd[0].GetBytes(serverSeparator));
-                server.Send(sd[1].GetBytes(serverSeparator));
+                if (sd != null)
+                {
+                    server.Send(sd[0].GetBytes(serverSeparator));
+                    server.Send(sd[1].GetBytes(serverSeparator));
+                }
             }
-
-
         }
 
         private delegate void UpdateOximeterPanelDelegate();

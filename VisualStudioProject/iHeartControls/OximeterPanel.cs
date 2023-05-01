@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Drawing.Drawing2D;
@@ -64,6 +60,8 @@ namespace OximeterControls
         private readonly Pen progressLinePen;
         private readonly Pen progressFillPen;
         private readonly Pen gridPen;
+
+        private readonly System.Timers.Timer chartUpdateTimer;
 
         private int spO2 = 0;
         public int SpO2
@@ -161,6 +159,15 @@ namespace OximeterControls
 
             chartMin = values.Min();
             chartMax = values.Max();
+
+            chartUpdateTimer = new System.Timers.Timer(60);
+            chartUpdateTimer.Elapsed += ChartUpdateTimer_Elapsed;
+            chartUpdateTimer.Start();
+        }
+
+        private void ChartUpdateTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            chartPanel.Invalidate();
         }
 
         private void chartPanel_Paint(object sender, PaintEventArgs e)
@@ -227,8 +234,6 @@ namespace OximeterControls
             chartIndex++;
             if (chartIndex > valuesCount - 1)
                 chartIndex = 0;
-
-            chartPanel.Invalidate();
         }
 
         private void CalculateChartValues()

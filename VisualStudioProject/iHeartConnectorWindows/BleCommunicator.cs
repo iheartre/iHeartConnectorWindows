@@ -1,4 +1,5 @@
 ﻿using iHeartConnectorWindows.Data;
+using System;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
@@ -68,7 +69,6 @@ namespace OximeterServer
                 Thread.Sleep(100);
             }
         }
-
 
         private void DeviceWatcher_Stopped(DeviceWatcher sender, object args)
         {
