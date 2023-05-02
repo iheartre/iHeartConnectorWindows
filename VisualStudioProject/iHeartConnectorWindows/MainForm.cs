@@ -96,14 +96,14 @@ namespace OximeterServer
         {
             InitializeComponent();
 
+            serverButton.Image = serverButtonImages.Images[0];
+
             oximeterPanel = new OximeterControls.OximeterPanel();
             oximeterPanel.Dock = DockStyle.Fill;
             oxiListPanel.Controls.Add(oximeterPanel);
 
             proc = HookCallback;
             hookID = SetHook(proc);
-
-            server.Start();
 
             redrawTimer.Start();
 
@@ -362,6 +362,22 @@ namespace OximeterServer
                 }.Start();
             }
             catch { }
+        }
+
+        private void serverButton_Click(object sender, EventArgs e)
+        {
+            if (server.Running)
+            {
+                server.Stop();
+                serverButton.Image = serverButtonImages.Images[0];
+                toolTip.SetToolTip(serverButton, "TCP server stopped");
+            }
+            else
+            {
+                server.Start();
+                serverButton.Image = serverButtonImages.Images[1];
+                toolTip.SetToolTip(serverButton, "TCP server running");
+            }
         }
     }
 }

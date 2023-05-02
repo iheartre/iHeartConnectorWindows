@@ -122,7 +122,6 @@ namespace OximeterControls
                 values[values.Length - 1] = 0;
 
                 CalculateChartValues();
-                chartPanel.Invalidate();
             }
         }
 

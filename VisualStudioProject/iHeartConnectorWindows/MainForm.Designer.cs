@@ -33,11 +33,13 @@
             oxiListPanel = new Panel();
             redrawTimer = new System.Windows.Forms.Timer(components);
             topPanel = new Panel();
+            serverButton = new Button();
             mimimizeButton = new Button();
             closeButton = new Button();
             exportButton = new Button();
             stopButton = new Button();
             recordButton = new Button();
+            serverButtonImages = new ImageList(components);
             statusLabel = new Label();
             mainPanel = new Panel();
             toolTip = new ToolTip(components);
@@ -69,6 +71,7 @@
             // 
             // topPanel
             // 
+            topPanel.Controls.Add(serverButton);
             topPanel.Controls.Add(mimimizeButton);
             topPanel.Controls.Add(closeButton);
             topPanel.Controls.Add(exportButton);
@@ -81,6 +84,21 @@
             topPanel.Size = new Size(460, 40);
             topPanel.TabIndex = 1;
             topPanel.MouseMove += topPanel_MouseMove;
+            // 
+            // serverButton
+            // 
+            serverButton.Dock = DockStyle.Left;
+            serverButton.FlatAppearance.BorderSize = 0;
+            serverButton.FlatStyle = FlatStyle.Flat;
+            serverButton.ImageIndex = 0;
+            serverButton.Location = new Point(120, 0);
+            serverButton.Margin = new Padding(4, 3, 4, 3);
+            serverButton.Name = "serverButton";
+            serverButton.Size = new Size(40, 40);
+            serverButton.TabIndex = 7;
+            toolTip.SetToolTip(serverButton, "TCP server is stopped");
+            serverButton.UseVisualStyleBackColor = true;
+            serverButton.Click += serverButton_Click;
             // 
             // mimimizeButton
             // 
@@ -158,6 +176,14 @@
             toolTip.SetToolTip(recordButton, "Start Recording");
             recordButton.UseVisualStyleBackColor = true;
             recordButton.Click += recordButton_Click;
+            // 
+            // serverButtonImages
+            // 
+            serverButtonImages.ColorDepth = ColorDepth.Depth32Bit;
+            serverButtonImages.ImageStream = (ImageListStreamer)resources.GetObject("serverButtonImages.ImageStream");
+            serverButtonImages.TransparentColor = Color.Transparent;
+            serverButtonImages.Images.SetKeyName(0, "server-off.png");
+            serverButtonImages.Images.SetKeyName(1, "server-on.png");
             // 
             // statusLabel
             // 
@@ -273,5 +299,7 @@
         private Panel bottomPanel;
         private ToolStripSeparator separator1;
         private ToolStripMenuItem lastExportMenuItem;
+        private Button serverButton;
+        private ImageList serverButtonImages;
     }
 }

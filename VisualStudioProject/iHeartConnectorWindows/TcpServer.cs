@@ -12,28 +12,41 @@ namespace OximeterServer
     {
         public TcpServer(IPAddress ip, int port)
         {
-            server = new(ip, 6000);
-            thread = new Thread(new ThreadStart(threadWork));
+            this.ip = ip;
+            this.port = port;
         }
 
-        private readonly TcpListener server;
+        private IPAddress ip;
+        private int port;
+
+        private bool running = false;
+        public bool Running { get { return running; } }
+
+        private TcpListener? server;
 
         private List<TcpClient> clients = new();
 
-        private readonly Thread thread;
+        private Thread? thread;
         private bool terminationRequested = false;
 
         public void Start()
         {
+            server = new(ip, port);
+            thread = new Thread(new ThreadStart(threadWork));
             thread.Start();
             server.Start();
             Accept_connection();
+            running = true;
         }
 
         public async void Stop()
         {
             terminationRequested = true;
-            await Task.Run(() => thread.Join());
+            if (thread != null)
+                await Task.Run(() => thread.Join());
+            if (server != null)
+                server.Stop();
+            running = false;
         }
 
         public void Send(byte[] data)
